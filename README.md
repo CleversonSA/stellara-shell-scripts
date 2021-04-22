@@ -1,2 +1,2 @@
 # stellara-shell-scripts
-Utility shell scripts to the Stellara SDR Station
+Utility bash shell scripts to the Stellara SDR Station based on Lubuntu 18.04
