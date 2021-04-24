@@ -26,7 +26,7 @@ startgqrx() {
     echo ${gqrx_choosen_mode} > ${gqrx_control_file}
     /usr/bin/gqrx -c ${gqrx_choosen_conf} -s windows &
     echo "Waiting for gqrx..."
-    sleep 15
+    sleep 10
 }
 
 # Starts or restarts gqrx
@@ -40,21 +40,21 @@ fi
 
 # Maybe when GQRX is not closed properly, a crash window appears
 # breaking the start up code
-retries=3
-while [ $retries -gt 0 ]
-do	
-  sleep 5
-  gqrxCrashWindow=$(/usr/bin/xdotool search --name "Crash Detected!" | head -n 1)
-  echo "Crash Window = ${gqrxCrashWindow}"
-  if [ "${gqrxCrashWindow}" != "" ]; then
-    echo "Crash detected, responding..."
-    /usr/bin/xdotool windowactivate --sync ${gqrxCrashWindow} key N
-    retries=0
-  fi
+#retries=3
+#while [ $retries -gt 0 ]
+#do	
+#  sleep 5
+#  gqrxCrashWindow=$(/usr/bin/xdotool search --name "Crash Detected!" | head -n 1)
+#  echo "Crash Window = ${gqrxCrashWindow}"
+#  if [ "${gqrxCrashWindow}" != "" ]; then
+#    echo "Crash detected, responding..."
+#    /usr/bin/xdotool windowactivate --sync ${gqrxCrashWindow} key N
+#    retries=0
+#  fi
 
-  retries=$(( ${retries} - 1 ))
-done
-sleep 5
+#  retries=$(( ${retries} - 1 ))
+#done
+#sleep 5
 
 
 gqrxWindowFound="N"
